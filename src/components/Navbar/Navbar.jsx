@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   
 
@@ -27,10 +27,12 @@ const Navbar = () => {
                 <SearchIcon className="searchIcon" />
               </Icon>
             </Group>
-            <ShoppingCartOutlinedIcon className="shopicon" />
               <Signinout>
-              <Linkto  onClick={()=>setActive(!active)}  className={active ? " sign active" : "sign"}>Sign Up</Linkto>
-             <Linkto  onClick={()=>setActive(active)}   className={active ? " sign active" : "sign"}>Sign In</Linkto>
+                <Link to='/signup' className="btn">Sign up</Link>
+                <Link to='/signin' className="btn">Sign in</Link>
+            <ShoppingCartOutlinedIcon className="shopicon" />
+              {/* <Linkto  onClick={()=>setActive(!active)}  className={active ? " sign active" : "sign"}>Sign Up</Linkto> */}
+             {/* <Linkto  onClick={()=>setActive(active)}   className={active ? " sign active" : "sign"}>Sign In</Linkto> */}
               </Signinout>
           </Right>
         </Wrapper>
@@ -44,8 +46,9 @@ export default Navbar;
 
 const Container = styled.div`
   font-family: "Roboto", sans-serif;
-  position: absolute;
+  position: fixed;
   left: 0;
+  z-index: 100;
   right: 0;
   height: 10vh;
   background-color: azure;
@@ -71,20 +74,12 @@ const Logo = styled.b`
 `;
 const Right = styled.div`
   width: 100%;
-  height: 100%;
   flex: 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  .shopicon {
-    /* margin: 0px 40px; */
-    position: relative;
-    float: left;
-    left: 20%;
-    color: black;
-  }
 `;
-
+// Bar Search
 const BarInput = styled.input`
   border: none;
   padding: 10px 20px;
@@ -113,32 +108,42 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+// Right
 const Signinout = styled.ul`
-  text-transform: uppercase;
+  width: 25%;
   display: flex;
-  margin: 0px 10xpx;
-  justify-content: space-between;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  width: 15%;
-  text-decoration: none;
-`;
-const Linkto = styled.li`
-  list-style-type: none;
-  color: orangered;
-  font-weight: 600;
-  text-decoration: none;
-  .sign{
-    position: relative;
-      &.active::after{
-        position: absolute;
-        content: "";
-        bottom: -3px;
-        display: block;
-        height: 2px;
-        width: 100%;
-        background-color: orangered;
-      }
+  align-items: center;
+  justify-content: space-evenly;
+  .btn{
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    background-color: orangered;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    &:hover{
+      background-color: orange;
+    } 
   }
-  
 `;
+// const Linkto = styled.li`
+//   list-style-type: none;
+//   color: orangered;
+//   font-weight: 600;
+//   text-decoration: none;
+//   .sign{
+//     position: relative;
+//       &.active::after{
+//         position: absolute;
+//         content: "";
+//         bottom: -3px;
+//         display: block;
+//         height: 2px;
+//         width: 100%;
+//         background-color: orangered;
+//       }
+//   }
+  
+// `;
