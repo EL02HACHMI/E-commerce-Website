@@ -1,26 +1,23 @@
 import React from 'react'
-import Navbar from './components/FirstPage/Navbar'
-import Home from './components/FirstPage/Home'
-import Footer from './components/FirstPage/Footer'
-import Category from './components/FirstPage/Category'
-import Products from './components/FirstPage/Products'
-import Newsletter from './components/FirstPage/Newsletter'
+import Routeone from './components/FirstPage/Routeone'
+// import About from './components/SecPage/About'
+import Navbar from './components/Navbar/Navbar'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import About from './components/SecPage/About'
 
 const App = () => {
   return (
-    <div>
-      <Navbar/>
-      <Home/>
-      <Category/>
-      <Products/>
-      <Newsletter/>
-      <Footer/>
+    <>
+    <BrowserRouter>
+      <Navbar/> 
+      <Routes>
+        <Route path="/" element={<Routeone/>}/>
+        {/* <Route path="/about" element={<About/>}/> */}
+      </Routes>
     
-    </div>
+    </BrowserRouter>
+    </>
   )
 }
 

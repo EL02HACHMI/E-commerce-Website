@@ -42,18 +42,16 @@ background-color: orangered;
     }
 
 `
-// Wrraper:;;
-
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100%;
     transform: translateX(${props=>props.slide * -100}vw);
     transition: all 3000ms ease;
 `
 
-// Left : =========================
 const Left = styled.div`
 flex: 2;
 display: flex;
