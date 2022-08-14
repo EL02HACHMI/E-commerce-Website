@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Login from "./Login"
-import {NavLink} from "react-router-dom"
+import React,{useState} from 'react'
+import Signup from './Signup'
+import styled from 'styled-components';
+
+
+
+
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -41,10 +45,10 @@ const Select = styled.select`
 const Btn = styled.div`
   padding: 10px;
   border-radius: 10px;
-  text-transform: uppercase;
   border: none;
   color: white;
   background-color: orangered;
+  text-transform: uppercase;
 `;
 
 const Title = styled.h2`
@@ -66,34 +70,27 @@ font-family: "Poppins",sans-serif;
 
 const Grp1 = styled.h2`
   display: flex;
-  
 `;
 
-const Signup = () => {
 
 
+
+
+
+
+
+
+
+const Login = () => {
   const [active,setActive]=useState(true)
+
   return (
     <Container>
       <Grp1>
-        <Title>Sign Up</Title>
-        {/* <Title onClick={()=>setActive(!active)}  >Log in</Title> */}
+        {/* <Title onClick={()=>setActive(!active)} to="/signup"><Signup/></Title> */}
+        <Title onClick={()=>setActive(!active)} to="/login" >Login</Title>
       </Grp1>
       <Form>
-        <Grp>
-          <Select
-            name="localisation"
-            placeholder="Your location"
-            id="localisation"
-          >
-            <Option value="Morocco" defaultValue="Morocco">
-              Morocco
-            </Option>
-            <Option value="Algerie">Algerie</Option>
-            <Option value="Tunisie">Tunisie</Option>
-            <Option value="France">France</Option>
-          </Select>
-        </Grp>
         <Grp>
           <Input type="email" name="adressemail" placeholder="Adresse mail" />
         </Grp>
@@ -101,11 +98,11 @@ const Signup = () => {
           <Input type="password" name="password" placeholder="Password" />
         </Grp>
         <Grp>
-          <Btn>SIGN UP</Btn>
+          <Btn>Log in</Btn>
         </Grp>
       </Form>
     </Container>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Login

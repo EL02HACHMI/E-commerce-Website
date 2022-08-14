@@ -3,9 +3,34 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import Signup from './../SecPage/Signup'
+import Login from './../SecPage/Login'
 import { Link } from "react-router-dom";
+
+
+// Modal
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '1px solid #afaeae',
+  p: 4,
+};
+
+// --------------
 const Navbar = () => {
-  
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   const [active,setActive]=useState(true);
 
@@ -28,11 +53,27 @@ const Navbar = () => {
               </Icon>
             </Group>
               <Signinout>
-                <Link to='/signup' className="btn">Sign up</Link>
-                <Link to='/signin' className="btn">Sign in</Link>
+
+                {/* Modal part */}
+              <Button onClick={handleOpen}>Sign up</Button>
+              <Button onClick={handleOpen}>Log in</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          {/* Modal content */}
+          <Signup/>
+          {/* <Login/> */}
+        </Box>
+      </Modal>
+
+      {/* Modal part end */}
+            {/* <Link   className="sign"  to='/signup' >Sign up</Link>
+            <Link  className= "sign"  to='/signin' >Sign in</Link> */}
             <ShoppingCartOutlinedIcon className="shopicon" />
-              {/* <Linkto  onClick={()=>setActive(!active)}  className={active ? " sign active" : "sign"}>Sign Up</Linkto> */}
-             {/* <Linkto  onClick={()=>setActive(active)}   className={active ? " sign active" : "sign"}>Sign In</Linkto> */}
               </Signinout>
           </Right>
         </Wrapper>
@@ -115,35 +156,30 @@ const Signinout = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  .btn{
-    text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
-    background-color: orangered;
-    color: white;
+  list-style-type: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  .sign{
+    position: relative;
+    color: Black;
     text-decoration: none;
-    padding: 10px;
-    border-radius: 10px;
-    &:hover{
-      background-color: orange;
-    } 
+      &::after{
+        position: absolute;
+        content: "";
+        bottom: -3px;
+        display: block;
+        height: 2px;
+        width: 0%;
+        background-color: orangered;
+        color: white;
+        transition: width 600ms ease;
+      }
+      &:hover::after{
+        width: 100%;
+
+      }
+
   }
-`;
-// const Linkto = styled.li`
-//   list-style-type: none;
-//   color: orangered;
-//   font-weight: 600;
-//   text-decoration: none;
-//   .sign{
-//     position: relative;
-//       &.active::after{
-//         position: absolute;
-//         content: "";
-//         bottom: -3px;
-//         display: block;
-//         height: 2px;
-//         width: 100%;
-//         background-color: orangered;
-//       }
-//   }
   
-// `;
+`;
