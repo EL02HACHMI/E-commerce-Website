@@ -8,6 +8,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: transparent;
+  border-radius: 10px;
 `;
 const Form = styled.form`
   height: 70%;

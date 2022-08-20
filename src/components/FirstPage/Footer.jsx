@@ -9,7 +9,7 @@ import RoomIcon from "@mui/icons-material/Room";
 import EmailIcon from "@mui/icons-material/Email";
 
 const Container = styled.div`
-  height: 40vh;
+  height: 50vh;
   display: flex;
 `;
 const Logo = styled.span`

@@ -3,37 +3,37 @@ import styled from "styled-components";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import Signup from './../SecPage/Signup'
-import Login from './../SecPage/Login'
+import Signup from "./../SecPage/Signup";
+import Login from "./../SecPage/Login";
 import { Link } from "react-router-dom";
+import { Badge } from '@mui/material';
 
 
-// Modal
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '1px solid #afaeae',
-  p: 4,
-};
+
+
+
+
+
+
+
+
+
+
+const Option = styled.option``;
+const Select = styled.select`
+  border: none;
+  outline: 0px;
+  padding: 10px 5px;
+  margin: 0px 10px;
+`;
 
 // --------------
 const Navbar = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
 
-
-  const [active,setActive]=useState(true);
-
+  const [active, setActive] = useState(true);
+  
   return (
     <div>
       <Container>
@@ -45,45 +45,40 @@ const Navbar = () => {
             <Group>
               <BarInput type="text" placeholder="Jeans" />
               <Categories>
-                All Categories
-                <ArrowDropDownIcon />
+                <Select
+                  name="localisation"
+                  placeholder="Your location"
+                  id="localisation"
+                >
+                  <Option value="" defaultValue="">
+                    Categories
+                  </Option>
+                  <Option value="Summer Shirts">Summer Shirts</Option>
+                  <Option value="Men Fashion">Men Fashion</Option>
+                  <Option value="Women Fashion">Women Fashion</Option>
+                  <Option value="Shoes">Shoes</Option>
+                </Select>
+                
               </Categories>
               <Icon>
                 <SearchIcon className="searchIcon" />
               </Icon>
             </Group>
-              <Signinout>
-
-                {/* Modal part */}
-              <Button onClick={handleOpen}>Sign up</Button>
-              <Button onClick={handleOpen}>Log in</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          {/* Modal content */}
-          <Signup/>
-          {/* <Login/> */}
-        </Box>
-      </Modal>
-
-      {/* Modal part end */}
-            {/* <Link   className="sign"  to='/signup' >Sign up</Link>
-            <Link  className= "sign"  to='/signin' >Sign in</Link> */}
-            <ShoppingCartOutlinedIcon className="shopicon" />
-              </Signinout>
+            <Signinout>
+              <Modal onClick={() => setOpen(!open)}>Register</Modal>
+              <Badge badgeContent={1} color="primary">
+                <ShoppingCartOutlinedIcon className="shopicon" />
+              </Badge>
+            </Signinout>
           </Right>
         </Wrapper>
       </Container>
+      {open && <Login setOpen={setOpen} />}
     </div>
   );
 };
 
 export default Navbar;
-
 
 const Container = styled.div`
   font-family: "Roboto", sans-serif;
@@ -125,6 +120,7 @@ const BarInput = styled.input`
   border: none;
   padding: 10px 20px;
   width: 500px;
+  outline: none;
 `;
 const Group = styled.div`
   border: 3px solid orangered;
@@ -137,6 +133,7 @@ const Categories = styled.div`
   color: #3f3f3f;
   display: flex;
   justify-content: center;
+  outline: none;
   align-items: center;
 `;
 const Icon = styled.div`
@@ -152,6 +149,7 @@ const Icon = styled.div`
 
 // Right
 const Signinout = styled.ul`
+  position: relative;
   width: 25%;
   display: flex;
   align-items: center;
@@ -160,26 +158,41 @@ const Signinout = styled.ul`
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  .sign{
+  .sign {
     position: relative;
     color: Black;
     text-decoration: none;
-      &::after{
-        position: absolute;
-        content: "";
-        bottom: -3px;
-        display: block;
-        height: 2px;
-        width: 0%;
-        background-color: orangered;
-        color: white;
-        transition: width 600ms ease;
-      }
-      &:hover::after{
-        width: 100%;
-
-      }
-
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: -3px;
+      display: block;
+      height: 2px;
+      width: 0%;
+      background-color: orangered;
+      color: white;
+      transition: width 600ms ease;
+    }
+    &:hover::after {
+      width: 100%;
+    }
   }
-  
+`;
+
+const Modal = styled.div`
+  position: relative;
+  background-color: orangered;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 300ms ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
