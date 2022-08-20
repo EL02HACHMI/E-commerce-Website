@@ -82,7 +82,7 @@ const Btn = styled.div`
   border: none;
   color: white;
   background-color: orangered;
-  text-transform: uppercase;
+  text-transform: capitalize;
   cursor: pointer;
 `;
 
@@ -110,6 +110,15 @@ const Grp1 = styled.h2`
 const Login = ({setOpen}) => {
   const [active, setActive] = useState(true);
 
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+  }
+
+
+
+
+
   return (
       <Wrapper>
       <ClearIcon className="iconClear" onClick={()=>setOpen(false)}/>
@@ -120,7 +129,7 @@ const Login = ({setOpen}) => {
               Login
             </Title>
           </Grp1>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Grp>
               <Input
                 type="email"
@@ -132,7 +141,7 @@ const Login = ({setOpen}) => {
               <Input type="password" name="password" placeholder="Password" />
             </Grp>
             <Grp>
-              <Btn>Log in</Btn>
+              <Btn>Connect</Btn>
             </Grp>
           </Form>
         </Left>
@@ -141,7 +150,7 @@ const Login = ({setOpen}) => {
           <Grp1>
             <Title>Sign Up</Title>
           </Grp1>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Grp>
               <Select
                 name="localisation"
@@ -167,7 +176,7 @@ const Login = ({setOpen}) => {
               <Input type="password" name="password" placeholder="Password" />
             </Grp>
             <Grp>
-              <Btn>SIGN UP</Btn>
+            <Btn>Add my account</Btn>
             </Grp>
           </Form>
         </Right>
