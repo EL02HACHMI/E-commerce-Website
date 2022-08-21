@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-
-
+import { useContext } from "react";
+import ProductContext from '../../ProductContext';
+import SingleProduct from './SingleProduct';
+import { useNavigate } from "react-router-dom";
 
 const Ic =styled.div`
     margin: 0px 15px;
@@ -54,19 +56,30 @@ margin: 0px auto;
 
 
 const Product = ({item}) => {
+  const {count,setCount} =useContext(ProductContext)
+  const {purchase,setPurchase} =useContext(ProductContext)
+  let navigate = useNavigate(); 
+
+
+
+
   return (
       <Container>
           <Image src={item.img}/>
          <Icon>
              <Ic>
-            <SearchRoundedIcon/>
+            <SearchRoundedIcon  onClick={() => navigate('/:{item.id}')}/>
              </Ic>
              <Ic>
-            <ShoppingCartOutlinedIcon/>
+            <ShoppingCartOutlinedIcon onClick={() => {
+              setPurchase(purchase + 1);
+            }}/>
             </Ic>
 
             <Ic>
-            <FavoriteBorderOutlinedIcon/>
+            <FavoriteBorderOutlinedIcon onClick={() => {
+              setCount(count + 1);
+            }}/>
             </Ic>
 
          </Icon>

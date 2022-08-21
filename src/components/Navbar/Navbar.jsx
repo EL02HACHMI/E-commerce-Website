@@ -7,7 +7,9 @@ import Signup from "./../SecPage/Signup";
 import Login from "./../SecPage/Login";
 import { Link } from "react-router-dom";
 import { Badge } from '@mui/material';
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useContext } from "react";
+import ProductContext from "../../ProductContext";
 
 
 
@@ -30,10 +32,9 @@ const Select = styled.select`
 
 // --------------
 const Navbar = () => {
+  const {count} =useContext(ProductContext)
+  const {purchase} =useContext(ProductContext)
   const [open, setOpen] = useState(false);
-
-  const [active, setActive] = useState(true);
-  
   return (
     <div>
       <Container>
@@ -66,9 +67,13 @@ const Navbar = () => {
             </Group>
             <Signinout>
               <Modal onClick={() => setOpen(!open)}>Register</Modal>
-              <Badge badgeContent={1} color="primary">
+              <Badge badgeContent={count} color="primary">
+                <FavoriteBorderIcon />
+              </Badge>
+              <Badge badgeContent={purchase} color="primary">
                 <ShoppingCartOutlinedIcon className="shopicon" />
               </Badge>
+
             </Signinout>
           </Right>
         </Wrapper>
