@@ -48,12 +48,16 @@ export const sliderItems = [
       id:1,
       title:" Unisex Shirt",
       path:"/product/:id",
+      price:'12.99$',
+      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iusto necessitatibus laborum, labore minima ab illum adipisci cumque tempore dolore optio beatae asperiores aliquam ex quo! Rerum minima eos totam.",
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
     },
     {
       id:2,
       title:"Sac",
       path:"/product/:id",
+      price:'10.99$',
+      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iusto necessitatibus laborum, labore minima ab illum adipisci cumque tempore dolore optio beatae asperiores aliquam ex quo! Rerum minima eos totam.",
       img:"https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
     
     }
@@ -61,6 +65,8 @@ export const sliderItems = [
       id:3,
       title:"Women Jacket",
       path:"/product/:id",
+      price:'20.99$',
+      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iusto necessitatibus laborum, labore minima ab illum adipisci cumque tempore dolore optio beatae asperiores aliquam ex quo! Rerum minima eos totam.",
       img:"https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
 
     },
@@ -68,18 +74,24 @@ export const sliderItems = [
       id:4,
       title:"Chemise from Summer",
       path:"/product/:id",
+      price:'42.99$',
+      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iusto necessitatibus laborum, labore minima ab illum adipisci cumque tempore dolore optio beatae asperiores aliquam ex quo! Rerum minima eos totam.",
       img:"https://www.prada.com/content/dam/pradanux_products/U/UCS/UCS319/1YOTF010O/UCS319_1YOT_F010O_S_182_SLF.png",    
     },
     {
       id:5,
       title:"Sac2",
       path:"/product/:id",
+      price:'10.99$',
+      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iusto necessitatibus laborum, labore minima ab illum adipisci cumque tempore dolore optio beatae asperiores aliquam ex quo! Rerum minima eos totam.",
       img:"https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
     },
     {
       id:6,
       title:"Casquette Dog Design",
       path:"/product/:id",
+      price:'8.99$',
+      desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam iusto necessitatibus laborum, labore minima ab illum adipisci cumque tempore dolore optio beatae asperiores aliquam ex quo! Rerum minima eos totam.",
       img:"https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
     },
     

@@ -10,6 +10,10 @@ import { ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
 import { ProductProvider } from "./ProductContext";
+import FavoriteMenu from "./components/FirstPage/FavoriteMenu";
+import PurchaseMenu from "./components/FirstPage/PurchaseMenu";
+import Test from "./components/FirstPage/Test";
+import SingleProduct from "./components/FirstPage/SingleProduct";
 
 const App = () => {
   const theme = createTheme({
@@ -28,14 +32,16 @@ const App = () => {
       <BrowserRouter>
         <ProductProvider>
           <ThemeProvider theme={theme}>
-            <Navbar />
+            {/* <Navbar /> */}
           </ThemeProvider>
           <Routes>
             <Route path="/" element={<Routeone />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            {/* <Route path="/MyPurchase" element={<PurchaseMenu />} /> */}
+            <Route path="/test" element={<Test />} />
             <Route path="*" element={<Error />} />
-            {/* <Route path="/about" element={<About/>}/> */}
+            <Route path="/product/:id" element={<SingleProduct/>}/>
           </Routes>
         </ProductProvider>
       </BrowserRouter>

@@ -11,6 +11,8 @@ import EmailIcon from "@mui/icons-material/Email";
 const Container = styled.div`
   height: 50vh;
   display: flex;
+  position: Static;
+  bottom: 0;
 `;
 const Logo = styled.span`
   font-weight: 700;

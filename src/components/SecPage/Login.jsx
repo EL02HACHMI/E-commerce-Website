@@ -10,7 +10,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 const Wrapper = styled.div`
 color: white;
-background-color: #3d0707c7;
+background-color: #b5cdd3d6;
 box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 50px;
  z-index: 100000;

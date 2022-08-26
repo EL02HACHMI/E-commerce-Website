@@ -5,22 +5,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Signup from "./../SecPage/Signup";
 import Login from "./../SecPage/Login";
-import { Link } from "react-router-dom";
-import { Badge } from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { Link, useNavigate } from "react-router-dom";
+import { Badge } from "@mui/material";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useContext } from "react";
 import ProductContext from "../../ProductContext";
-
-
-
-
-
-
-
-
-
-
-
+import PurchaseMenu from "../FirstPage/PurchaseMenu";
+import Test from "../FirstPage/Test";
+import FavoriteMenu from "../FirstPage/FavoriteMenu";
 
 const Option = styled.option``;
 const Select = styled.select`
@@ -32,15 +24,29 @@ const Select = styled.select`
 
 // --------------
 const Navbar = () => {
-  const {count} =useContext(ProductContext)
-  const {purchase} =useContext(ProductContext)
+  const { count } = useContext(ProductContext);
+  const { purchase } = useContext(ProductContext);
   const [open, setOpen] = useState(false);
+  const [isShown, setIsShown] = useState(false);
+  const [show, setShow] = useState(false);
+  let navigate = useNavigate();
+
+  const handleClickfavorite = () => {
+    setShow(false)
+    setIsShown(!isShown);
+  };
+
+  const handleClickshop = () => {
+    setIsShown(false);
+    setShow(!show);
+  };
+
   return (
     <div>
       <Container>
         <Wrapper>
           <Left>
-            <Logo>Illumi.</Logo>
+            <Logo onClick={()=>navigate('/')}>Illumi.</Logo>
           </Left>
           <Right>
             <Group>
@@ -59,7 +65,6 @@ const Navbar = () => {
                   <Option value="Women Fashion">Women Fashion</Option>
                   <Option value="Shoes">Shoes</Option>
                 </Select>
-                
               </Categories>
               <Icon>
                 <SearchIcon className="searchIcon" />
@@ -67,13 +72,28 @@ const Navbar = () => {
             </Group>
             <Signinout>
               <Modal onClick={() => setOpen(!open)}>Register</Modal>
-              <Badge badgeContent={count} color="primary">
-                <FavoriteBorderIcon />
+              <Badge
+                badgeContent={count}
+                color="primary"
+                onClick={handleClickfavorite}
+              >
+                <FavoriteBorderIcon
+                  className="favoriteicon"
+                  onClick={handleClickfavorite}
+                />
+
+                {isShown && <FavoriteMenu />}
               </Badge>
               <Badge badgeContent={purchase} color="primary">
-                <ShoppingCartOutlinedIcon className="shopicon" />
+                <ShoppingCartOutlinedIcon
+                  className="shopicon"
+                  onClick={handleClickshop}
+                />
+                {/* onClick={handleClickshop} */}
+                {/* onClick={() => navigate("/PurchaseMenu")} */}
               </Badge>
 
+              {show && <PurchaseMenu />}
             </Signinout>
           </Right>
         </Wrapper>
@@ -181,6 +201,14 @@ const Signinout = styled.ul`
     &:hover::after {
       width: 100%;
     }
+  }
+
+  .favoriteicon {
+    cursor: pointer;
+  }
+
+  .shopicon {
+    cursor: pointer;
   }
 `;
 

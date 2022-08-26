@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -6,7 +6,10 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import { useContext } from "react";
 import ProductContext from '../../ProductContext';
 import SingleProduct from './SingleProduct';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+
+
 
 const Ic =styled.div`
     margin: 0px 15px;
@@ -39,7 +42,7 @@ border:  none;
 const Image =styled.img`
 width: 300px;
 height: 500px;
-background-color: #ff440021;
+background-color: #e4f6fc;
 padding: 10px;
 `
 const Icon =styled.div`
@@ -59,31 +62,37 @@ const Product = ({item}) => {
   const {count,setCount} =useContext(ProductContext)
   const {purchase,setPurchase} =useContext(ProductContext)
   let navigate = useNavigate(); 
-
-
+  const  id=item.id;
+  const [test,setTest]=useState([])
 
 
   return (
-      <Container>
+    <Container>
+        
           <Image src={item.img}/>
          <Icon>
              <Ic>
-            <SearchRoundedIcon  onClick={() => navigate('/:{item.id}')}/>
+             <Link to={`/product/${id}`}>
+            <SearchRoundedIcon/>
+            </Link>
              </Ic>
              <Ic>
             <ShoppingCartOutlinedIcon onClick={() => {
               setPurchase(purchase + 1);
+              const newId=id
+              const newTitle=item.title
+              const obj ={newId,newTitle}
+              
             }}/>
             </Ic>
-
             <Ic>
             <FavoriteBorderOutlinedIcon onClick={() => {
               setCount(count + 1);
             }}/>
             </Ic>
-
          </Icon>
       </Container>
+
   )
 }
 
