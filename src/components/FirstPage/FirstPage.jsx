@@ -5,19 +5,19 @@ import Footer from "./Footer";
 import Category from "./Category";
 import Products from "./Products";
 import Newsletter from "./Newsletter";
-
+import styled from 'styled-components';
 const FirstPage = () => {
   return (
-    <div>
-
+    <>
       <Navbar />
       <Home />
-      <Category />
       <Products />
+      <Category />
       <Newsletter />
       <Footer />
-    </div>
+    </>
   );
 };
 
 export default FirstPage;
+

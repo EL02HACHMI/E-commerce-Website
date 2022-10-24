@@ -5,8 +5,8 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 
 const Container = styled.div`
-    height: 100vh;
-    width: 100%;
+    
+    margin: 10px 0px;
     display: flex;
 `
 const Infos = styled.div`

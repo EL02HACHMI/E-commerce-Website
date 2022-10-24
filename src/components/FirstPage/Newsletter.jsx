@@ -26,7 +26,7 @@ const Formgrp=styled.div`
     align-items: center;
     justify-content: center;
     & .icon{
-        color: orangered;
+        color: black;
         cursor: pointer;
     }
 `
@@ -34,7 +34,7 @@ const Input=styled.input`
     margin: 10px;
     outline: none;
     padding: 10px 100px 10px 5px;
-    background-color: #ff44004e;
+    background-color: #00000084;
     border: none;
     &:placeholder-shown{
         color: white;

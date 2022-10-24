@@ -12,7 +12,8 @@ const Container = styled.div`
   right: 0;
   height: 10vh;
   z-index: 1000;
-  background-color: azure;
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -34,11 +35,13 @@ const Logo = styled.b`
 
 const Navbar = () => {
 
+  const navigate=useNavigate()
+
   return (
     <div>
       <Container>
         <Wrapper>
-            <Logo>Illumi.</Logo>
+            <Logo onClick={()=>navigate('/')}>Illumi.</Logo>
         </Wrapper>
       </Container>
     </div>
