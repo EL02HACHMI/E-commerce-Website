@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 
@@ -54,12 +55,13 @@ margin: 0px auto;
 
 
 const Product = ({item}) => {
+    const navigate=useNavigate()
   return (
       <Container>
           <Image src={item.img}/>
          <Icon>
              <Ic>
-            <SearchRoundedIcon/>
+            <SearchRoundedIcon onClick={()=>navigate(`/product/${item.id}`)}/>
              </Ic>
              <Ic>
             <ShoppingCartOutlinedIcon/>

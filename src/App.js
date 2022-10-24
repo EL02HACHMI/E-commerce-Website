@@ -1,27 +1,26 @@
-import React from 'react'
-import Navbar from './components/FirstPage/Navbar'
-import Home from './components/FirstPage/Home'
-import Footer from './components/FirstPage/Footer'
-import Category from './components/FirstPage/Category'
-import Products from './components/FirstPage/Products'
-import Newsletter from './components/FirstPage/Newsletter'
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import About from './components/SecPage/About'
+import React from "react";
+import FirstPage from "./components/FirstPage/FirstPage";
+import Errorpage from "./pages/Errorpage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "./components/SecPage/About";
+import Register from "./pages/Register";
+import Eachproduct from "./components/FirstPage/Eachproduct";
+import { ProductProvider } from "./ProductApi";
 
 const App = () => {
   return (
-    <div>
-      <Navbar/>
-      <Home/>
-      <Category/>
-      <Products/>
-      <Newsletter/>
-      <Footer/>
-    
-    </div>
-  )
-}
+    <ProductProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<FirstPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/product/:id" element={<Eachproduct/>}/>
+          <Route path="*" element={<Errorpage />} />
+        </Routes>
+      </BrowserRouter>
+    </ProductProvider>
+  );
+};
 
-export default App
+export default App;
