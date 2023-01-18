@@ -5,7 +5,6 @@ import Product from './Product'
 
 
 const Container=styled.div`
-    /* background-color:#c96b6b;   */
     width: 100%;
     display: flex;
     justify-content: center;

@@ -1,85 +1,78 @@
-import React from 'react'
-import styled from 'styled-components'
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import React from "react";
+import styled from "styled-components";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 // import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { ProductApi } from '../../ProductApi';
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ProductApi } from "../../ProductApi";
 
+const Container = styled.div`
+  margin: 10px;
+  position: relative;
+  outline: none;
+  border: none;
+`;
 
+const Wrapper = styled.div`
+  width: 300px;
+  height: 400px;
+  border: 1px solid #999;
+  
 
-const Ic =styled.div`
-    margin: 0px 15px;
-    background-color: white;
-    padding: 0 5px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.8s ease;
-    cursor: pointer;
-&:hover{
-    background-color: rgba(247, 68, 3, 0.7);
-    transform: scale(1.1);
-    color: white;
-}
-`
+`;
 
-const Container=styled.div`
-margin: 10px;
-position: relative;
-outline: none;
-border:  none;
-&:hover ${Ic}{
-    opacity: 1;
-}
-`
-
-const Image =styled.img`
-width: 300px;
-height: 500px;
-background-color: #ff440021;
-padding: 10px;
-`
-const Icon =styled.div`
-display:flex;
-align-items: center;
-justify-content: center;
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+`;
+const Icon = styled.div`
 position: absolute;
-top: 50%;
 left: 0;
 right: 0;
-margin: 0px auto;
+bottom: 0px;
+margin: auto;
+display: flex;
+justify-content: center;
+gap: 20px;
+margin: 10px;
 
-`
+`;
 
 
-const Product = ({item}) => {
-    const navigate=useNavigate()
+const Ic = styled.div`
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all .3s ease;
+  color: black;
+  background-color: transparent;
+  :hover{
+        background-color: #00000094;
+        color: white;
+    }
+`;
+const Product = ({ item }) => {
+  const navigate = useNavigate();
 
-    const {addToshop}=useContext(ProductApi)
+  const { addToshop } = useContext(ProductApi);
   return (
-      <Container key={item.id}>
-          <Image src={item.img}/>
-         <Icon>
-             <Ic>
-            <SearchRoundedIcon onClick={()=>navigate(`/product/${item.id}`)}/>
-             </Ic>
-             <Ic>
-            <ShoppingCartOutlinedIcon  onClick={()=>addToshop(item.id)}/>
-    
-            
-            </Ic>
+    <Container key={item.id}>
+        <Wrapper>
+      <Image src={item.img} />
+      <Icon>
+        <Ic>
+          <SearchRoundedIcon onClick={() => navigate(`/product/${item.id}`)} />
+        </Ic>
+        <Ic>
+          <ShoppingCartOutlinedIcon onClick={() => addToshop(item.id)} />
+        </Ic>
+      </Icon>
+        </Wrapper>
+    </Container>
+  );
+};
 
-
-         </Icon>
-         
-      </Container>
-  )
-}
-
-export default Product
-
-
+export default Product;
