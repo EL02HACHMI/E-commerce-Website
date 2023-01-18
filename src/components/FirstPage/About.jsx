@@ -10,7 +10,7 @@ const Container=styled.div`
 
 const About = () => {
   return (
-      <Container>HAhah</Container>
+      <Container>ABOUT PAGE</Container>
   )
 }
 

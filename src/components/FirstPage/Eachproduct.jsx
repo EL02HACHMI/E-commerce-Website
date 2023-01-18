@@ -2,16 +2,13 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ProductApi } from "../../ProductApi";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
 const Eachproduct = () => {
-  const productsitems = useContext(ProductApi);
+  const {productsitems} = useContext(ProductApi);
   const { id } = useParams();
   const product = productsitems.find((item) => item.id == id);
   return (
-    <>
-      <Navbar />
-      <Container>
+    
+      <Container >
         <Wrapper>
           <FormGrp>
           <Photo src={product.img} alt="product image" />
@@ -50,7 +47,7 @@ const Eachproduct = () => {
         </Wrapper>
         
       </Container>
-    </>
+    
   );
 };
 

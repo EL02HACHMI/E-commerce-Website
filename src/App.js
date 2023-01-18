@@ -6,15 +6,20 @@ import About from "./components/SecPage/About";
 import Register from "./pages/Register";
 import Eachproduct from "./components/FirstPage/Eachproduct";
 import { ProductProvider } from "./ProductApi";
-
+import Navbar from "./components/FirstPage/Navbar";
+import Myshop from './components/FirstPage/Myshop'
+import ContactUs from "./components/FirstPage/ContactUs";
 const App = () => {
   return (
     <ProductProvider>
       <BrowserRouter>
+      <Navbar/>
         <Routes>
           <Route path="/" element={<FirstPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/myshop" element={<Myshop />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/product/:id" element={<Eachproduct/>}/>
           <Route path="*" element={<Errorpage />} />
         </Routes>

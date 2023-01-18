@@ -2,15 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { useNavigate, useParams } from 'react-router-dom';
+// import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { ProductApi } from '../../ProductApi';
 
 
 
 const Ic =styled.div`
     margin: 0px 15px;
     background-color: white;
-    padding: 5px;
+    padding: 0 5px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -56,22 +58,24 @@ margin: 0px auto;
 
 const Product = ({item}) => {
     const navigate=useNavigate()
+
+    const {addToshop}=useContext(ProductApi)
   return (
-      <Container>
+      <Container key={item.id}>
           <Image src={item.img}/>
          <Icon>
              <Ic>
             <SearchRoundedIcon onClick={()=>navigate(`/product/${item.id}`)}/>
              </Ic>
              <Ic>
-            <ShoppingCartOutlinedIcon/>
+            <ShoppingCartOutlinedIcon  onClick={()=>addToshop(item.id)}/>
+    
+            
             </Ic>
 
-            <Ic>
-            <FavoriteBorderOutlinedIcon/>
-            </Ic>
 
          </Icon>
+         
       </Container>
   )
 }
